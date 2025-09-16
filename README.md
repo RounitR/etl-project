@@ -2,16 +2,15 @@
 
 ## 📌 Overview
 
-This project implements an end-to-end ETL pipeline for retail sales data, automating the complete workflow from raw data ingestion to interactive analytics dashboards.
+A fully automated, cloud-native ETL pipeline that processes retail sales data from raw CSV files to interactive analytics dashboards. This project demonstrates modern data engineering practices using AWS services and Snowflake for scalable data processing and visualization.
 
-**Pipeline Flow:**
+**Pipeline Architecture:**
 ```
-Raw Data Ingestion → AWS S3 (/raw/) → Data Cleaning → AWS Lambda (Python) → 
-Storage → S3 (/cleaned/) → Load → Snowflake (via COPY INTO) → 
-Analytics & Dashboard → Snowflake Snowsight
+Raw CSV Upload → AWS S3 (/raw/) → Lambda ETL Processing → S3 (/cleaned/) → 
+Snowflake Data Warehouse → Interactive Snowsight Dashboard
 ```
 
-**✅ Goal:** Automate raw → cleaned → loaded → visualized in a single workflow.
+**🎯 Achievement:** Successfully built an end-to-end automated data pipeline that transforms dirty sales data into actionable business insights.
 
 ---
 
@@ -19,93 +18,92 @@ Analytics & Dashboard → Snowflake Snowsight
 
 ![ETL Pipeline Architecture](diagrams/etl_pipeline.png)
 
-**Architecture Flow:**
+**Data Flow:**
 ```
-[S3 Raw] → [Lambda Cleaning] → [S3 Cleaned] → [Snowflake Stage] → [Snowflake Table] → [Snowsight Dashboard]
+[S3 Raw Storage] → [Lambda ETL Function] → [S3 Cleaned Storage] → 
+[Snowflake External Stage] → [Sales Table] → [Analytics Dashboard]
 ```
 
 ---
 
-## 📂 Project Phases
+## 🎯 Key Features
 
-### **Phase 1–3: Infrastructure Setup**
+### **🔄 Automated Data Processing**
+- **Event-Driven Architecture**: S3 upload automatically triggers Lambda processing
+- **Real-time ETL**: Instant data cleaning and transformation upon file upload
+- **Error Handling**: Comprehensive logging and error management throughout the pipeline
 
-**Completed Tasks:**
-- ✅ Created S3 buckets:
-  - `etl-retail-data-rounit/raw/` → raw files
-  - `etl-retail-data-rounit/cleaned/` → cleaned files
-- ✅ Configured IAM role & policies
-- ✅ Setup AWS Lambda trigger for S3 → clean data
+### **🧹 Advanced Data Cleaning**
+- **Deduplication**: Removes duplicate records based on multiple criteria
+- **Data Validation**: Handles missing values and invalid data formats
+- **Standardization**: Normalizes date formats, region names, and product categories
+- **Derived Metrics**: Calculates line totals and additional business metrics
 
-**📸 Screenshots:**
+### **📊 Interactive Analytics**
+- **Multi-Chart Dashboard**: 5 different visualization types for comprehensive analysis
+- **Real-time Updates**: Dashboard refreshes automatically with new data
+- **Business Intelligence**: Key metrics including sales trends, regional performance, and product analysis
 
+### **☁️ Cloud-Native Infrastructure**
+- **Serverless Processing**: AWS Lambda for cost-effective, scalable ETL operations
+- **Secure Storage**: S3 with proper IAM roles and bucket policies
+- **Enterprise Data Warehouse**: Snowflake for high-performance analytics
+
+---
+
+## 🏗️ What We Built
+
+### **Data Generation & Testing**
+- **Dirty Data Generator**: Custom Python script (`generate_dirty_data.py`) creates realistic messy datasets for testing
+- **Sample Data**: Clean and dirty CSV samples for pipeline validation
+- **Data Quality Issues**: Simulates real-world data problems (duplicates, missing values, format inconsistencies)
+
+### **ETL Processing Engine**
+- **Lambda Function**: Sophisticated Python ETL logic with pandas for data transformation
+- **S3 Integration**: Seamless file processing between raw and cleaned buckets
+- **Monitoring**: CloudWatch logging for pipeline observability
+
+### **Data Warehouse Setup**
+- **Snowflake Configuration**: Complete warehouse, database, and schema setup
+- **External Stages**: S3-Snowflake integration for automated data loading
+- **COPY INTO Commands**: Efficient bulk data loading with error handling
+
+### **Analytics Dashboard**
+Built a comprehensive **Retail ETL Dashboard** in Snowsight featuring:
+1. **Total Sales by Region** - Geographic performance analysis
+2. **Monthly Sales Trend** - Time-series revenue tracking  
+3. **Top 5 Products** - Best-performing product identification
+4. **Category Sales Distribution** - Product category performance
+5. **Average Order Value Trend** - Customer spending patterns
+
+---
+
+## 📸 Project Screenshots
+
+### **Infrastructure & Processing**
 ![S3 Bucket Structure](screenshots/s3_structure.png)
-*S3 bucket structure showing raw/ and cleaned/ folders*
-
----
-
-### **Phase 4–6: ETL Processing**
-
-**Completed Tasks:**
-- ✅ Lambda function processes new CSV uploads → cleans & outputs to `/cleaned/`
-- ✅ Snowflake COPY INTO loads cleaned data into `sales_cleaned` table
-- ✅ Data successfully queried inside Snowflake
-
-**📸 Screenshots:**
+*AWS S3 bucket organization with raw/ and cleaned/ data folders*
 
 ![AWS Lambda Function](screenshots/lambda_code.png)
-*AWS Lambda function code editor showing ETL cleaning logic*
+*Lambda function showing ETL processing logic and data transformation code*
 
+### **Data Warehouse Operations**
 ![Snowflake COPY INTO Command](screenshots/snowflake_copy_into.png)
-*Snowflake worksheet showing COPY INTO command execution*
+*Snowflake worksheet executing COPY INTO command for data loading*
 
 ![Snowflake Query Results](screenshots/snowflake_query.png)
-*Query results showing cleaned data: SELECT * FROM sales_cleaned LIMIT 10*
+*Sample query results showing successfully loaded and cleaned sales data*
 
----
-
-### **Phase 7: Analytics & Dashboard**
-
-**Completed Tasks:**
-- ✅ Built interactive **Retail ETL Dashboard** in Snowsight with 5 analytical tiles:
-  1. **Total Sales by Region** (Bar Chart)
-  2. **Monthly Sales Trend** (Line Chart)
-  3. **Top 5 Products** (Bar Chart)
-  4. **Category Sales Distribution** (Bar Chart)
-  5. **Average Order Value Trend** (Line Chart)
-
-**📸 Screenshots:**
-
+### **Analytics & Visualization**
 ![Retail ETL Dashboard](screenshots/dashboard.png)
-*Complete Retail ETL Dashboard in Snowsight showing all 5 analytical charts*
+*Complete interactive dashboard in Snowsight with all 5 analytical charts*
 
----
-
-### **Phase 8: Documentation & Polish**
-
-**Completed Tasks:**
-- ✅ Finalized README.md (this file)
-- ✅ Added architecture diagram
-- ✅ Collected screenshots under `screenshots/` directory
-- ✅ Created comprehensive documentation
-
----
-
-### **Phase 9: Final Showcase**
-
-**End-to-End Workflow:**
-1. Upload dirty CSV → `/raw/`
-2. Lambda auto-triggers → cleans data → saves to `/cleaned/`
-3. Snowflake loads → `sales_cleaned` table
-4. Dashboard refreshes → updated charts
-
-**📸 Screenshots:**
-
+### **End-to-End Workflow**
 ![Before and After Processing](screenshots/before_after_s3.png)
-*Before → After: Raw data vs Cleaned data in S3*
+*Comparison showing raw data transformation to cleaned, structured format*
 
 ![Updated Dashboard](screenshots/dashboard_updated.png)
-*Dashboard with refreshed data after new file processing*
+*Dashboard automatically updated with new data after pipeline execution*
 
 ---
 
@@ -168,6 +166,7 @@ etl-project/
 │   │   └── lambda_function.py
 │   ├── automation_plan.md
 │   ├── etl_spec.md
+│   ├── generate_dirty_data.py   # Dirty data generator for testing
 │   ├── snowflake_readme.md
 │   └── snowflake_setup.sql
 ├── screenshots/
@@ -356,7 +355,7 @@ order_id     | product      | category   | quantity | price  | order_date | regi
 
 ```bash
 cd scripts
-python generate_data.py
+python generate_dirty_data.py
 ```
 
 This creates fresh sample data in `data/sample_sales.csv` with 150 realistic sales records.
