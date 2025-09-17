@@ -54,7 +54,6 @@ Snowflake Data Warehouse → Interactive Snowsight Dashboard
 |-----------|------------|-------------|
 | **S3 Structure** | ![S3](screenshots/s3_structure.png) | Raw & cleaned data organization |
 | **Lambda Function** | ![Lambda](screenshots/lambda_code.png) | ETL processing code |
-| **Snowflake Operations** | ![Snowflake](screenshots/snowflake_copy_into.png) | Data loading commands |
 | **Analytics Dashboard** | ![Dashboard](screenshots/dashboard.png) | Complete 5-chart dashboard |
 | **Data Transformation** | ![Before/After](screenshots/before_after_s3.png) | Raw vs cleaned data |
 
@@ -162,17 +161,3 @@ SNOWFLAKE_PASSWORD=your_password
 - [ ] Advanced analytics (ML predictions)
 - [ ] Mobile-responsive dashboards
 - [ ] Automated testing framework
-
----
-
-## 📞 Contact
-
-**Project Maintainer**: RounitR  
-**GitHub**: [https://github.com/RounitR/etl-project](https://github.com/RounitR/etl-project)  
-**Region**: Asia-Pacific (Singapore)
-
----
-
-**🎉 Project Status: ✅ COMPLETED**
-
-*This ETL pipeline demonstrates modern cloud-based data engineering with full automation, real-time processing, and interactive analytics.*
