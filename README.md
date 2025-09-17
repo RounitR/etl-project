@@ -52,10 +52,10 @@ Snowflake Data Warehouse → Interactive Snowsight Dashboard
 
 | Component | Screenshot | Description |
 |-----------|------------|-------------|
-| **S3 Structure** | ![S3](screenshots/s3_structure.png) | Raw & cleaned data organization |
-| **Lambda Function** | ![Lambda](screenshots/lambda_code.png) | ETL processing code |
-| **Analytics Dashboard** | ![Dashboard](screenshots/dashboard.png) | Complete 5-chart dashboard |
-| **Data Transformation** | ![Before/After](screenshots/before_after_s3.png) | Raw vs cleaned data |
+| **S3 Structure** | ![S3](diagrams/s3_structure.png) | Raw & cleaned data organization |
+| **Lambda Function** | ![Lambda](diagrams/lambda_code.png) | ETL processing code |
+| **Analytics Dashboard** | ![Dashboard](diagrams/dashboard.png) | Complete 5-chart dashboard |
+| **Data Transformation** | ![Before/After](diagrams/before_after_s3.png) | Raw vs cleaned data |
 
 ---
 
@@ -101,13 +101,17 @@ etl-project/
 ├── data/                          # Sample datasets
 │   ├── sample_sales_dirty.csv     # Raw test data (150+ records)
 │   └── sample_sales_dirty_cleaned.csv  # Processed data
+├── diagrams/                          # Project Screenshots
+│   ├── s3_structure.png
+│   ├── lambda_code.png
+│   ├── dashboard.png
+│   └── before_after_s3.png
 ├── scripts/
 │   ├── generate_dirty_data.py     # Data generator for testing
 │   └── lambda/
 │       └── lambda_function.py     # AWS Lambda ETL code
 ├── diagrams/
 │   └── etl_pipeline.png          # Architecture diagram
-├── screenshots/                   # Project documentation
 ├── requirements.txt              # Python dependencies
 └── README.md                     # This file
 ```
